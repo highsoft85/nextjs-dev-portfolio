@@ -1,4 +1,5 @@
 'use client';
+
 import { projectsData } from "@/app/lib/data/projects";
 import ProjectCard from "./project-card";
 
