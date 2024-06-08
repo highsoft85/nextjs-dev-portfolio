@@ -25,7 +25,7 @@ export default function ContactWithoutCaptcha() {
     }
   };
 
-  const handleSendMail = async (e: any) => {
+  const handleSendMail = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!input.to_reply || !input.message || !input.to_reply) {

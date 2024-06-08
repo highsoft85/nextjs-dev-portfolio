@@ -23,7 +23,11 @@ export default function Education() {
         </div>
       </div>
 
-      <div className="flex justify-center my-11 lg:py-8">
+      <div className="flex justify-center">
+          <div className="w-[120px] h-[120px] bg-violet-100 rounded-full absolute top-10 mx-auto translate-x translate-y filter blur-3xl opacity-20"></div>          
+      </div>
+
+      <div className="flex justify-center my-11 lg:pt-8">
         <div className="flex  items-center">
           <span className="w-24 h-[2px] bg-[#1a1443]"></span>
           <span className="bg-[#1a1443] w-fit text-white p-2 px-5 text-xl rounded-md">
@@ -33,7 +37,7 @@ export default function Education() {
         </div>
       </div>
 
-      <div className="py-8">
+      <div className="py-0">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
           <div className="flex justify-center items-start">
             <div className="w-3/4 h-3/4">
