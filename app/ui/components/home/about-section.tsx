@@ -3,16 +3,16 @@ import { personalData } from "@/app/lib/data/personal";
 
 export default function AboutSection() {
   return (
-    <div id="about" className="my-12 lg:my-16 relative py-24">
-      <div className="hidden lg:flex flex-col items-center absolute top-36 -right-8">
+    <div id="about" className="my-0 lg:my-16 relative">
+      <div className="hidden lg:flex flex-col items-center absolute top-36 lg:top-56 -right-8">
         <span className="bg-[#1a1443] w-fit text-white rotate-90 p-2 px-5 text-xl rounded-md">
           ABOUT ME
         </span>
         <span className="h-36 w-[2px] bg-[#1a1443]"></span>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 pt-20 lg:pt-44 pb-12 lg:pb-20">
         <div className="order-2 lg:order-1">
-          <p className="font-medium mb-5 text-[#16f2b3] text-xl uppercase">
+          <p className="font-medium mb-5 text-[#16f2b3] text-xl uppercase mb-12">
             Who I am?
           </p>
           <p className="text-gray-200 text-sm lg:text-lg">

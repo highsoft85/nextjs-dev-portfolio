@@ -4,7 +4,6 @@ import * as React from 'react';
 import { type ProjectType } from '@/app/lib/data/definitions';
 
 function ProjectCard({project}: {project: ProjectType}) {
-
   return (
     <div className="from-[#0d1224] border-[#1b2c68a0] relative rounded-lg border bg-gradient-to-r to-[#0a0d37] w-full">
       <div className="flex flex-row">

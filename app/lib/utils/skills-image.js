@@ -28,6 +28,7 @@ import git from '/public/svg/skills/git.svg';
 import go from '/public/svg/skills/go.svg';
 import graphql from '/public/svg/skills/graphql.svg';
 import haxe from '/public/svg/skills/haxe.svg';
+import heroku from '/public/svg/skills/heroku.svg';
 import html from '/public/svg/skills/html.svg';
 import illustrator from '/public/svg/skills/illustrator.svg';
 import ionic from '/public/svg/skills/ionic.svg';
@@ -35,6 +36,7 @@ import java from '/public/svg/skills/java.svg';
 import javascript from '/public/svg/skills/javascript.svg';
 import julia from '/public/svg/skills/julia.svg';
 import kotlin from '/public/svg/skills/kotlin.svg';
+import laravel from '/public/svg/skills/laravel.svg';
 import lightroom from '/public/svg/skills/lightroom.svg';
 import markdown from '/public/svg/skills/markdown.svg';
 import materialui from '/public/svg/skills/materialui.svg';
@@ -43,6 +45,7 @@ import memsql from '/public/svg/skills/memsql.svg';
 import microsoftoffice from '/public/svg/skills/microsoftoffice.svg';
 import mongoDB from '/public/svg/skills/mongoDB.svg';
 import mysql from '/public/svg/skills/mysql.svg';
+import net_core from '/public/svg/skills/net_core.svg';
 import nextJS from '/public/svg/skills/nextJS.svg';
 import nginx from '/public/svg/skills/nginx.svg';
 import numpy from '/public/svg/skills/numpy.svg';
@@ -57,15 +60,18 @@ import python from '/public/svg/skills/python.svg';
 import pytorch from '/public/svg/skills/pytorch.svg';
 import react from '/public/svg/skills/react.svg';
 import ruby from '/public/svg/skills/ruby.svg';
+import rails from '/public/svg/skills/rails.svg';
 import selenium from '/public/svg/skills/selenium.svg';
 import sketch from '/public/svg/skills/sketch.svg';
 import strapi from '/public/svg/skills/strapi.svg';
+import supabase from '/public/svg/skills/supabase.svg';
 import svelte from '/public/svg/skills/svelte.svg';
 import swift from '/public/svg/skills/swift.svg';
 import tailwind from '/public/svg/skills/tailwind.svg';
 import tensorflow from '/public/svg/skills/tensorflow.svg';
 import typescript from '/public/svg/skills/typescript.svg';
 import unity from '/public/svg/skills/unity.svg';
+import vercel from '/public/svg/skills/vercel.svg';
 import vitejs from '/public/svg/skills/vitejs.svg';
 import vue from '/public/svg/skills/vue.svg';
 import vuetifyjs from '/public/svg/skills/vuetifyjs.svg';
@@ -225,6 +231,19 @@ export const skillsImage = (skill) => {
       return wolframalpha;
     case 'canva':
       return canva;
+    case 'laravel':
+      return laravel;
+    case 'rails':
+      return rails;
+    case '.net core':
+      return net_core;
+    case 'heroku':
+      return heroku;
+    case 'vercel':
+      return vercel;
+    case 'supabase':
+      return supabase;
+    
     default:
       break;
   }

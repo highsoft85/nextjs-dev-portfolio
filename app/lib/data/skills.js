@@ -5,19 +5,24 @@ export const skillsData = [
   'Typescript',
   'React',
   'Next JS',
+  'PHP',
+  'Laravel',
+  'Java',
+  'Rails', 
+  '.NET Core',
+  'Bootstrap',
   'Tailwind',
   'MongoDB',
   'MySQL',
   'PostgreSQL',
   'Git',
-  'AWS',
-  'Bootstrap',
   'Docker',
-  'Go',
-  'Figma',
+  'Vercel',
+  'AWS',
+  'Heroku',
+  'Azure',
   'Firebase',
-  'MaterialUI',
-  'Nginx',
+  'Supabase',
   'Strapi'
 ]
 
@@ -26,7 +31,6 @@ export const skillsData = [
 
 
 // AVAILABLE SKILLS
-
 /* 
   HTML
   CSS
@@ -71,6 +75,7 @@ export const skillsData = [
   Kotlin
   Go
   PHP
+  Laravel
   Flutter
   Dart
   Typescript

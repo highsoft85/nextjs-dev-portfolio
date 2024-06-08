@@ -9,10 +9,10 @@ export const personalData = {
   phone: '+8801608797655',
   address: 'Kneza Mihaila 23b Obrenovac, SE 11500 Serbia',
   github: 'https://github.com/highsoft85',
-  facebook: 'https://www.facebook.com/abusaid.riyaz/',
-  linkedIn: 'https://www.linkedin.com/in/abu-said-bd/',
-  twitter: 'https://twitter.com/said7388',
+  facebook: 'https://www.facebook.com/highsoft85/',
+  linkedIn: 'https://www.linkedin.com/in/highsoft85/',
+  twitter: 'https://twitter.com/highsoft85',
   stackOverflow: 'https://stackoverflow.com/users/24877703/highsoft85',
-  leetcode: "https://leetcode.com/said3812/",
+  leetcode: "https://leetcode.com/highsoft85/",
   resume: "https://drive.google.com/file/d/1eyutpKFFhJ9X-qpQGKhUNnVRkB5Wer00/view?usp=sharing"
 }
