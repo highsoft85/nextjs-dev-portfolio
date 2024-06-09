@@ -20,7 +20,7 @@ export default function Experience() {
       />
 
       <div className="flex justify-center">
-          <div className="w-[140px] h-[140px] bg-violet-100 rounded-full absolute top-6 mx-auto translate-x translate-y filter blur-3xl opacity-20"></div>          
+          <div className="w-[100px] h-[100px] bg-violet-100 rounded-full absolute top-12 mx-auto translate-x translate-y filter blur-3xl opacity-20"></div>          
       </div>
 
       <div className="flex justify-center my-11 lg:pt-8">
@@ -45,7 +45,7 @@ export default function Experience() {
             <div className="flex flex-col gap-6">
               {
                 experiences.map(experience => (
-                  <GlowCard key={experience.id} identifier={`experience-${experience.id}`}>
+                  <GlowCard key={`experience_${experience.id}`} identifier={`experience-${experience.id}`}>
                     <div className="p-3 relative">
                       <Image
                         src="/blur-23.svg"

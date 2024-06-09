@@ -2,31 +2,45 @@
 // @flow strict
 import { isValidEmail } from '@/app/lib/utils/check-email';
 import emailjs from '@emailjs/browser';
-// import axios from 'axios';
 import { useState } from 'react';
-import ReCAPTCHA from 'react-google-recaptcha';
 import { TbMailForward } from "react-icons/tb";
 import { toast } from 'react-toastify';
+// import axios from 'axios';
+import ReCAPTCHA from 'react-google-recaptcha';
+import { personalData } from '@/app/lib/data/personal';
 
-function ContactWithCaptcha() {
+export default function ContactWithCaptcha() {
   const [input, setInput] = useState({
-    name: '',
-    email: '',
+    to_name: personalData.nickName, 
+    from_name: '',
     message: '',
+    reply_to: 'billgreen8210@gmail.com'
   });
   const [captcha, setCaptcha] = useState(null);
   const [error, setError] = useState({
-    email: false,
+    reply_to: false,
     required: false,
   });
+  const [isSending, setIsSending] = useState(false);
 
   const checkRequired = () => {
-    if (input.email && input.message && input.name) {
+    if (input.reply_to && input.message && input.from_name) {
       setError({ ...error, required: false });
     }
   };
 
-  const handleSendMail = async (e: any) => {
+  const handleSendMail = async (e: React.SyntheticEvent) => {
+    e.preventDefault();
+
+    if (!input.reply_to || !input.message || !input.reply_to) {
+      setError({ ...error, required: true });
+      return;
+    } else if (error.reply_to) {
+      return;
+    } else {
+      setError({ ...error, required: false });
+    };
+
     if (!captcha) {
       toast.error('Please complete the captcha!');
       return;
@@ -42,16 +56,7 @@ function ContactWithCaptcha() {
       // };
     };
 
-    e.preventDefault();
-    if (!input.email || !input.message || !input.name) {
-      setError({ ...error, required: true });
-      return;
-    } else if (error.email) {
-      return;
-    } else {
-      setError({ ...error, required: false });
-    };
-
+    setIsSending(true);
     const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "";
     const templateID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "";
     const options = { publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY };
@@ -62,18 +67,21 @@ function ContactWithCaptcha() {
       if (res.status === 200) {
         toast.success('Message sent successfully!');
         setInput({
-          name: '',
-          email: '',
+          to_name: personalData.nickName, 
+          from_name: '',
           message: '',
+          reply_to: ''
         });
       };
     } catch (error: any) {
       toast.error(error?.text || error);
+    } finally {
+      setIsSending(false);
     };
   };
 
   return (
-    <div className="">
+    <div>
       <p className="font-medium mb-5 text-[#16f2b3] text-xl uppercase">
         Contact with me
       </p>
@@ -89,9 +97,9 @@ function ContactWithCaptcha() {
               type="text"
               maxLength={100}
               required={true}
-              onChange={(e) => setInput({ ...input, name: e.target.value })}
+              onChange={(e) => setInput({ ...input, from_name: e.target.value })}
               onBlur={checkRequired}
-              value={input.name}
+              value={input.from_name}
             />
           </div>
 
@@ -102,14 +110,14 @@ function ContactWithCaptcha() {
               type="email"
               maxLength={100}
               required={true}
-              value={input.email}
-              onChange={(e) => setInput({ ...input, email: e.target.value })}
+              value={input.reply_to}
+              onChange={(e) => setInput({ ...input, reply_to: e.target.value })}
               onBlur={() => {
                 checkRequired();
-                setError({ ...error, email: !isValidEmail(input.email) });
+                setError({ ...error, reply_to: !isValidEmail(input.reply_to) });
               }}
             />
-            {error.email &&
+            {error.reply_to &&
               <p className="text-sm text-red-400">Please provide a valid email!</p>
             }
           </div>
@@ -128,8 +136,8 @@ function ContactWithCaptcha() {
             />
           </div>
           <ReCAPTCHA
-            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
-            onChange={(code: any) => setCaptcha(code)}
+            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ?? "NOT DEFINED"}
+            onChange={(token: string | null) => setCaptcha(token?)}
           />
           <div className="flex flex-col items-center gap-2">
             {error.required &&
@@ -137,13 +145,16 @@ function ContactWithCaptcha() {
                 Email and Message are required!
               </p>
             }
-            <button
+            <button disabled={isSending}
               className="flex items-center gap-1 hover:gap-3 rounded-full bg-gradient-to-r from-pink-500 to-violet-600 px-5 md:px-12 py-2.5 md:py-3 text-center text-xs md:text-sm font-medium uppercase tracking-wider text-white no-underline transition-all duration-200 ease-out hover:text-white hover:no-underline md:font-semibold"
               role="button"
               onClick={handleSendMail}
             >
               <span>Send Message</span>
               <TbMailForward className="mt-1" size={18} />
+              {
+                isSending && "Sending..."
+              }
             </button>
           </div>
         </div>
@@ -151,5 +162,3 @@ function ContactWithCaptcha() {
     </div>
   );
 };
-
-export default ContactWithCaptcha;

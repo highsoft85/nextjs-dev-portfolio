@@ -1,29 +1,18 @@
 // @flow strict
 
-import { personalData } from "@/app/lib/data/personal";
-import BlogCard from "@/app/ui/components/home/blogs/blog-card";
+import BlogCard from "@/app/ui/components/common/blog-card";
+import { getBlogs } from "@/app/lib/data/api";
 
-async function getBlogs() {
-  const res = await fetch(`https://dev.to/api/articles?username=${personalData.devUsername}`)
-
-  if (!res.ok) {
-    throw new Error('Failed to fetch data')
-  }
-
-  const data = await res.json();
-  return data;
-};
-
-async function page() {
-  const blogs = await getBlogs();
+export default async function Page() {
+  const blogs = await getBlogs(true);
 
   return (
     <div className="py-8">
-      <div className="flex justify-center my-5 lg:py-8">
+      <div className="flex justify-center mb-5 lg:pb-8">
         <div className="flex  items-center">
           <span className="w-24 h-[2px] bg-[#1a1443]"></span>
           <span className="bg-[#1a1443] w-fit text-white p-2 px-5 text-2xl rounded-md">
-            All Blog
+            All Blogs
           </span>
           <span className="w-24 h-[2px] bg-[#1a1443]"></span>
         </div>
@@ -33,12 +22,10 @@ async function page() {
         {
           blogs.map((blog, i) => (
             blog?.cover_image &&
-            <BlogCard blog={blog} key={i} />
+            <BlogCard blog={blog} key={`blog_${i}`} />
           ))
         }
       </div>
     </div>
   );
 };
-
-export default page;

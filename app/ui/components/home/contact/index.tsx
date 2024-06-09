@@ -9,7 +9,7 @@ import { MdAlternateEmail } from "react-icons/md";
 import ContactWithCaptcha from './contact-with-captcha';
 import ContactWithoutCaptcha from './contact-without-captcha';
 
-function ContactSection() {
+export default function ContactSection() {
   return (
     <div id="contact" className="my-12 lg:my-16 relative mt-24 text-white">
       <div className="hidden lg:flex flex-col items-center absolute top-24 -right-8">
@@ -20,8 +20,9 @@ function ContactSection() {
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
         {
-          (process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && process.env.NEXT_PUBLIC_RECAPTCHA_SECRET_KEY) ? 
+          (process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && process.env.RECAPTCHA_SECRET_KEY) ? 
           <ContactWithCaptcha /> : <ContactWithoutCaptcha />
+          // <ContactWithoutCaptcha /> : <ContactWithCaptcha />
         }
 
         <div className="lg:w-3/4 ">
@@ -68,5 +69,3 @@ function ContactSection() {
     </div>
   );
 };
-
-export default ContactSection;

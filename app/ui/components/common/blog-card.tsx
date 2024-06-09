@@ -6,7 +6,7 @@ import { BsHeartFill } from 'react-icons/bs';
 import { FaCommentAlt } from 'react-icons/fa';
 import { type BlogType } from '@/app/lib/data/definitions';
 
-function BlogCard({ blog }: {blog: BlogType}) {
+export default function BlogCard({ blog }: {blog: BlogType}) {
 
   return (
     <div className="border border-[#1d293a] hover:border-[#464c6a] transition-all duration-500 bg-[#1b203e] rounded-lg relative group"
@@ -49,7 +49,7 @@ function BlogCard({ blog }: {blog: BlogType}) {
         </p>
         {/* <div className="">
           <Link target='_blank' href={blog.url}>
-            <button className='bg-violet-500 text-white px-3 py-1.5 rounded-full text-xs'>
+            <button className='bg-violet-500 text-white px-3 py-1.5 rounded-full text-xs hover:text-[#16f2b3]'>
               Read More
             </button>
           </Link>
@@ -58,5 +58,3 @@ function BlogCard({ blog }: {blog: BlogType}) {
     </div>
   );
 };
-
-export default BlogCard;

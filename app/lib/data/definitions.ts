@@ -9,6 +9,7 @@ export type ProjectType = {
   code: string;
   demo: string;
   image: StaticImageData;
+  url: string;
 };
 
 export type BlogType = {

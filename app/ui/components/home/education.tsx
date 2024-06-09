@@ -26,7 +26,7 @@ export default function Education() {
       </div>
 
       <div className="flex justify-center">
-          <div className="w-[120px] h-[120px] bg-violet-100 rounded-full absolute top-10 mx-auto translate-x translate-y filter blur-3xl opacity-20"></div>          
+          <div className="w-[100px] h-[100px] bg-violet-100 rounded-full absolute top-[3.2rem] mx-auto translate-x translate-y filter blur-3xl opacity-20"></div>          
       </div>
 
       <div className="flex justify-center my-11 lg:pt-8">
@@ -51,7 +51,7 @@ export default function Education() {
             <div className="flex flex-col gap-6">
               {
                 educations.map(education => (
-                  <GlowCard key={education.id} identifier={`education-${education.id}`}>
+                  <GlowCard key={`education_${education.id}`} identifier={`education-${education.id}`}>
                     <div className="p-3 relative text-white">
                       <Image
                         src="/blur-23.svg"

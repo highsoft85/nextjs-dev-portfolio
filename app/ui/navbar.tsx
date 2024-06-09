@@ -17,7 +17,7 @@ export default function Navbar() {
     { id: 2, link: "/#experience", text: "EXPERIENCE" },
     { id: 1, link: "/#skills", text: "SKILLS" },
     { id: 1, link: "/#education", text: "EDUCATION" },
-    { id: 1, link: "/#blogs", text: "BLOGS" },
+    { id: 1, link: "/blog", text: "BLOGS" },
     { id: 1, link: "/#projects", text: "PROJECTS" }
   ];
 
@@ -51,10 +51,10 @@ export default function Navbar() {
 
         <ul className="hidden md:flex mt-4 flex h-screen max-h-0 w-full flex-col items-start text-sm opacity-0 md:mt-0 md:h-auto md:max-h-screen md:w-auto md:flex-row md:space-x-1 md:border-0 md:opacity-100">
           {links.map(({ id, link, text }) => (
-            <li key={id}>
+            <li key={`link_${id}`}>
             <Link className="block px-4 py-2 no-underline outline-none hover:no-underline" href={link}>
               <div className="text-sm text-white transition-colors duration-300 hover:text-pink-600">{text}</div>
-              </Link>
+            </Link>
             </li>
           ))}
         </ul>
@@ -68,7 +68,7 @@ export default function Navbar() {
         {isDrawerOpen && (
           <ul className="flex flex-col justify-center items-center absolute top-0 left-0 w-full h-screen bg-[#0d1224]">
             {links.map(({ id, link, text }) => (
-              <li key={id} className="px-4 cursor-pointer capitalize py-6 text-4xl">
+              <li key={`mobile_link_${id}`} className="px-4 cursor-pointer capitalize py-6 text-4xl">
               <Link className="block no-underline outline-none hover:no-underline" href={link}
                 onClick={() => setIsDrawerOpen(!isDrawerOpen)}>
                 <div className="text-4xl text-white transition-colors duration-300 hover:text-pink-600">{text}</div>

@@ -47,7 +47,7 @@ export default function HeroSection() {
               <FaStackOverflow size={30} />
             </Link>
             <Link
-              href={personalData.stackOverflow}
+              href={personalData.devTo}
               target='_blank'
               className="transition-all text-pink-500 hover:scale-125 duration-300"
             >

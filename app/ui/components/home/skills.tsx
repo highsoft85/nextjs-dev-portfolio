@@ -6,11 +6,12 @@ import { skillsImage } from "@/app/lib/utils/skills-image";
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
 
-function Skills() {
+export default function Skills() {
   return (
     <div id="skills" className="relative z-50 border-t my-12 lg:my-24 border-[#25213b]">
       <div className="flex justify-center">
-          <div className="w-[100px] h-[100px] bg-violet-100 rounded-full absolute top-10 mx-auto translate-x translate-y filter blur-3xl opacity-20"></div>          
+          <div className="w-[60px] h-[60px] bg-violet-100 rounded-full absolute top-[70px] mx-auto translate-x translate-y filter blur-3xl opacity-20"
+            ></div>          
       </div>
 
       <div className="flex justify-center -translate-y-[1px]">
@@ -41,7 +42,7 @@ function Skills() {
         >
           {skillsData.map((skill, id) => (
             <div className="w-36 min-w-fit h-fit flex flex-col items-center justify-center transition-all duration-500 m-3 sm:m-5 rounded-lg group relative hover:scale-[1.15] cursor-pointer"
-              key={id}>
+              key={`skill_${id}`}>
               <div className="h-full w-full rounded-lg border border-[#1f223c] bg-[#11152c] shadow-none shadow-gray-50 group-hover:border-violet-500 transition-all duration-500">
                 <div className="flex -translate-y-[1px] justify-center">
                   <div className="w-3/4">
@@ -70,5 +71,3 @@ function Skills() {
     </div>
   );
 };
-
-export default Skills;

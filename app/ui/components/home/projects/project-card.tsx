@@ -1,9 +1,12 @@
 // @flow strict
 
 import * as React from 'react';
+import Link from 'next/link';
 import { type ProjectType } from '@/app/lib/data/definitions';
 
-function ProjectCard({project}: {project: ProjectType}) {
+export default function ProjectCard({project}: {project: ProjectType}) {
+  const toolsLength: number = project.tools.length;
+
   return (
     <div className="from-[#0d1224] border-[#1b2c68a0] relative rounded-lg border bg-gradient-to-r to-[#0a0d37] w-full">
       <div className="flex flex-row">
@@ -40,11 +43,15 @@ function ProjectCard({project}: {project: ProjectType}) {
             <span className="text-gray-400">{` ['`}</span>
             {
               project.tools.map((tag, i) => (
-                <React.Fragment key={i}>
+                <React.Fragment key={`project_tools_${i}`}>
                   <span className="text-amber-300">{tag}</span>
-                  {
-                    project.tools.length - 1 !== i &&
+                  { 
+                    toolsLength - 1 > i &&
                     <span className="text-gray-400">{`', '`}</span>
+                  }
+                  {
+                    toolsLength - 1 === i &&
+                    <span className="text-gray-400">{`'`}</span>
                   }
                 </React.Fragment>
               ))
@@ -52,20 +59,27 @@ function ProjectCard({project}: {project: ProjectType}) {
             <span className="text-gray-400">{"],"}</span>
           </div>
           <div>
-            <span className="ml-4 lg:ml-8 mr-2 text-white">myRole:</span>
+            <span className="ml-4 lg:ml-8 mr-2 text-white">role:</span>
             <span className="text-orange-400">{project.role}</span>
             <span className="text-gray-400">,</span>
           </div>
-          <div className="ml-4 lg:ml-8 mr-2">
+          <div>
+            <span className="ml-4 lg:ml-8 mr-2 text-white">website:</span>
+            <span className="text-orange-400">
+              <Link href={project.url} target="_blank"
+                className="text-white transition-colors duration-300 hover:text-pink-600">
+                {new URL(project.url).hostname}
+              </Link>
+            </span>
+          </div>
+          {/* <div className="ml-4 lg:ml-8 mr-2">
             <span className="text-white">Description:</span>
             <span className="text-cyan-400">{' ' + project.description}</span>
             <span className="text-gray-400">,</span>
-          </div>
-          <div><span className="text-gray-400">{`};`}</span></div>
+          </div>*/}
+          <div><span className="text-gray-400">{`};`}</span></div> 
         </code>
       </div>
     </div>
   );
 };
-
-export default ProjectCard;
