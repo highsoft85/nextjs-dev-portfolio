@@ -54,6 +54,7 @@ export default function ContactWithCaptcha() {
     const res: ServerResType = await sendMail(input);
     if (res.success) {
       toast.success(res.message);
+      setInput(FORM_DEFAULT);
       recaptchaRef.current?.reset();
     } else {
       toast.error(res.message);
