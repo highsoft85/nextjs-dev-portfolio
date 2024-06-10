@@ -12,9 +12,9 @@ import type { DictionaryType, ServerResType } from '@/app/lib/data/definitions';
 export default function ContactWithCaptcha() {
   const FORM_DEFAULT: DictionaryType = {
     to_name: personalData.nickName, 
-    from_name: 'Bill',
-    message: 'Hello',
-    reply_to: 'billgreen8210@gmail.com',
+    from_name: '',
+    message: '',
+    reply_to: '',
     token: '',
   };
 
