@@ -7,7 +7,7 @@ import Projects from "@/app/ui/components/home/projects";
 import Education from "@/app/ui/components/home/education";
 import Blog from "@/app/ui/components/home/blog";
 import Contact from "@/app/ui/components/home/contact";
-import { getBlogs } from "@/app/lib/data/api";
+import { getBlogs } from "@/app/lib/actions";
 
 export default async function Home() {
   const blogs = await getBlogs();

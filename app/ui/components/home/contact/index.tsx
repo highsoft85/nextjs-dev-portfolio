@@ -22,7 +22,6 @@ export default function ContactSection() {
         {
           (process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && process.env.RECAPTCHA_SECRET_KEY) ? 
           <ContactWithCaptcha /> : <ContactWithoutCaptcha />
-          // <ContactWithoutCaptcha /> : <ContactWithCaptcha />
         }
 
         <div className="lg:w-3/4 ">

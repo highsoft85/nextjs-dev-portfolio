@@ -1,36 +1,45 @@
 "use client";
 // @flow strict
 import { isValidEmail } from '@/app/lib/utils/check-email';
-import emailjs from '@emailjs/browser';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { TbMailForward } from "react-icons/tb";
 import { toast } from 'react-toastify';
-// import axios from 'axios';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { personalData } from '@/app/lib/data/personal';
+import { sendMail } from '@/app/lib/actions';
+import type { DictionaryType, ServerResType } from '@/app/lib/data/definitions';
 
 export default function ContactWithCaptcha() {
-  const [input, setInput] = useState({
+  const FORM_DEFAULT: DictionaryType = {
     to_name: personalData.nickName, 
-    from_name: '',
-    message: '',
-    reply_to: 'billgreen8210@gmail.com'
-  });
-  const [captcha, setCaptcha] = useState(null);
+    from_name: 'Bill',
+    message: 'Hello',
+    reply_to: 'billgreen8210@gmail.com',
+    token: '',
+  };
+
+  const [input, setInput] = useState(FORM_DEFAULT);
   const [error, setError] = useState({
     reply_to: false,
     required: false,
   });
   const [isSending, setIsSending] = useState(false);
 
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
+
   const checkRequired = () => {
     if (input.reply_to && input.message && input.from_name) {
       setError({ ...error, required: false });
     }
   };
-
-  const handleSendMail = async (e: React.SyntheticEvent) => {
+ 
+  const handleSendMessage = async (e: React.SyntheticEvent) => {
     e.preventDefault();
+
+    if (!input.token) {
+      toast.error('Please complete the captcha!');
+      return;
+    }
 
     if (!input.reply_to || !input.message || !input.reply_to) {
       setError({ ...error, required: true });
@@ -41,43 +50,15 @@ export default function ContactWithCaptcha() {
       setError({ ...error, required: false });
     };
 
-    if (!captcha) {
-      toast.error('Please complete the captcha!');
-      return;
+    setIsSending(true);    
+    const res: ServerResType = await sendMail(input);
+    if (res.success) {
+      toast.success(res.message);
+      recaptchaRef.current?.reset();
     } else {
-      // const res = await axios.post(`${process.env.NEXT_PUBLIC_APP_URL}/api/google`, {
-      //   token: captcha
-      // });
-
-      // setCaptcha(null);
-      // if (!res.data.success) {
-      //   toast.error('Captcha verification failed!');
-      //   return;
-      // };
-    };
-
-    setIsSending(true);
-    const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "";
-    const templateID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "";
-    const options = { publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY };
-
-    try {
-      const res = await emailjs.send(serviceID, templateID, input, options);
-
-      if (res.status === 200) {
-        toast.success('Message sent successfully!');
-        setInput({
-          to_name: personalData.nickName, 
-          from_name: '',
-          message: '',
-          reply_to: ''
-        });
-      };
-    } catch (error: any) {
-      toast.error(error?.text || error);
-    } finally {
-      setIsSending(false);
-    };
+      toast.error(res.message);
+    }
+    setIsSending(false);
   };
 
   return (
@@ -137,7 +118,11 @@ export default function ContactWithCaptcha() {
           </div>
           <ReCAPTCHA
             sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ?? "NOT DEFINED"}
-            onChange={(token: string | null) => setCaptcha(token?)}
+            ref={recaptchaRef}
+            size="normal" // invisible | normal
+            onChange={(code) => setInput({...input, token: code || ''})}
+            onExpired={() => setInput({...input, token: ''})}
+            asyncScriptOnLoad={() => console.log('Google recaptcha loaded just fine')}
           />
           <div className="flex flex-col items-center gap-2">
             {error.required &&
@@ -145,10 +130,11 @@ export default function ContactWithCaptcha() {
                 Email and Message are required!
               </p>
             }
-            <button disabled={isSending}
+            <button 
+              disabled={isSending}
               className="flex items-center gap-1 hover:gap-3 rounded-full bg-gradient-to-r from-pink-500 to-violet-600 px-5 md:px-12 py-2.5 md:py-3 text-center text-xs md:text-sm font-medium uppercase tracking-wider text-white no-underline transition-all duration-200 ease-out hover:text-white hover:no-underline md:font-semibold"
               role="button"
-              onClick={handleSendMail}
+              onClick={handleSendMessage}
             >
               <span>Send Message</span>
               <TbMailForward className="mt-1" size={18} />

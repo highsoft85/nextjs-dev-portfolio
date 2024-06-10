@@ -24,9 +24,11 @@ export type BlogType = {
   reading_time_minutes: number;
 }
 
-export type EmilJsParams = {
-  to_name: string;
-  from_name: string;
-  message: string;
-  reply_to: string;
+export type DictionaryType = {
+  [key: string]: string;
+}
+
+export type ServerResType = {
+  success: boolean;
+  message: string | null 
 }
