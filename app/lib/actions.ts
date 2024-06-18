@@ -8,7 +8,7 @@ export async function getBlogs(all: boolean = false): Promise<BlogType[]> {
 
   try {
     // const res = await fetch(`https://dev.to/api/articles?username=${personalData.devUsername}`)
-    const res = await fetch(`https://dev.to/api/articles?username=said7388`);
+    const res = await fetch(`https://dev.to/api/articles?username=highsoft85`);
     const data = await res.json();
 
     if (!all) {

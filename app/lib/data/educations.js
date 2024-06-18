@@ -10,5 +10,5 @@ export const educations = [
     title: "Computer Technician Certificate",
     duration: "2012 - 2015",
     institution: "Technical School",
-  }
+  },
 ]

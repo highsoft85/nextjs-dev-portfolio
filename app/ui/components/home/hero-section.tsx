@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { BsGithub } from "react-icons/bs";
-import { FaStackOverflow } from "react-icons/fa";
+import { FaStackOverflow, FaFreeCodeCamp } from "react-icons/fa";
 import { BiLogoDevTo } from "react-icons/bi";
 import { RiContactsFill } from "react-icons/ri";
 import { MdDownload } from "react-icons/md";
@@ -52,6 +52,13 @@ export default function HeroSection() {
               className="transition-all text-pink-500 hover:scale-125 duration-300"
             >
               <BiLogoDevTo size={30} />
+            </Link>
+            <Link
+              href={personalData.freecodecamp}
+              target='_blank'
+              className="transition-all text-pink-500 hover:scale-125 duration-300"
+            >
+              <FaFreeCodeCamp size={30} />
             </Link>
           </div>
 
