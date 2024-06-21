@@ -1,5 +1,5 @@
 export const personalData = {
-  name: "Highsoft85",
+  name: "Boban S.",
   nickName: "Highsoft85",
   devUsername: "highsoft85",
   profile: '/profile.png',
@@ -14,7 +14,7 @@ export const personalData = {
   stackOverflow: 'https://stackoverflow.com/users/24877703/highsoft85',
   devTo: 'https://dev.to/highsoft85',
   leetcode: "https://leetcode.com/highsoft85/",
-  resume: "https://drive.google.com/file/d/1eyutpKFFhJ9X-qpQGKhUNnVRkB5Wer00111/view?usp=sharing",
+  resume: "https://drive.google.com/file/d/14aEVlnsZugR-D-8cEWjHJitpc1VN7H_0/view?usp=sharing",
   freecodecamp: "https://www.freecodecamp.org/highsoft85",
   description: "I am a professional and enthusiastic full-stack developer. As a freelance full-stack developer, I bring a robust skill set and years of experience to the table. And I am a quick learner with a self-learning attitude. I love to explore new technologies and am passionate about problem-solving. I love to make the web more convenient and functional. I am available for any kind of job opportunity that suits my skills and interests. And you would be satisfied with my result.",
 }
