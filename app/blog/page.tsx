@@ -4,7 +4,7 @@ import BlogCard from "@/app/ui/components/common/blog-card";
 import { getBlogs } from "@/app/lib/actions";
 
 export default async function Page() {
-  const blogs = await getBlogs(true);
+  const blogs = await getBlogs();
 
   return (
     <div className="py-8">

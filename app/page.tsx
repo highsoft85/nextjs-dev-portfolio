@@ -1,4 +1,3 @@
-import Image from "next/image";
 import HeroSection from "@/app/ui/components/home/hero-section";
 import AboutSection from "@/app/ui/components/home/about-section";
 import Experience from "@/app/ui/components/home/experience";
@@ -10,7 +9,8 @@ import Contact from "@/app/ui/components/home/contact";
 import { getBlogs } from "@/app/lib/actions";
 
 export default async function Home() {
-  const blogs = await getBlogs();
+  const blogs = await getBlogs(); 
+  
   return (
     <>
       <HeroSection />
