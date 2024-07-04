@@ -20,7 +20,7 @@ export async function getBlogs(all: boolean = false): Promise<BlogType[]> {
   } catch (error) {
     throw new Error("Failed to fetch blog data");
   }
-};
+}
 
 export async function sendMail(params: DictionaryType): Promise<ServerResType> {
   noStore();
